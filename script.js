@@ -1,6 +1,19 @@
 // Initialize EmailJS (replace with your EmailJS credentials)
 emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your Public Key from EmailJS dashboard
 
+// Create floating hearts
+function createHearts() {
+  const container = document.querySelector(".hearts-container");
+  for (let i = 0; i < 10; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart-particle";
+    heart.style.left = `${Math.random() * 100}vw`;
+    heart.style.animationDelay = `${Math.random() * 5}s`;
+    container.appendChild(heart);
+  }
+}
+createHearts();
+
 // Form submission
 document.getElementById("capsule-form").addEventListener("submit", function(event) {
   event.preventDefault();

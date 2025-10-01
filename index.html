@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A time capsule letter for our love, to be opened together in the future.">
-  <title>Our Love Time Capsule</title>
+  <meta name="description" content="A love letter for Myriam, to be opened on her 80th birthday.">
+  <title>Our Forever Love Capsule</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#f5e6f0">
@@ -12,17 +12,17 @@
 </head>
 <body>
   <header>
-    <h1>Our Love Time Capsule</h1>
-    <p>A letter to celebrate our life together, sealed with love until the perfect moment.</p>
+    <h1>Our Forever Love Capsule</h1>
+    <p>A letter for Myriam, sealed with love until her 80th birthday in 2070.</p>
   </header>
   <main>
     <section id="letter-form">
       <h2>Write Your Love Letter</h2>
       <form id="capsule-form" aria-label="Time capsule letter form">
-        <label for="unlock-date">When should we open this? *</label>
-        <input type="date" id="unlock-date" required aria-required="true">
-        <label for="letter-content">Your Heartfelt Letter *</label>
-        <textarea id="letter-content" rows="6" required aria-required="true" placeholder="My love, here’s to our forever..."></textarea>
+        <label for="unlock-date">Myriam’s 80th Birthday *</label>
+        <input type="date" id="unlock-date" value="2070-01-01" required aria-required="true">
+        <label for="letter-content">Your Heartfelt Letter to Myriam *</label>
+        <textarea id="letter-content" rows="6" required aria-required="true" placeholder="Myriam, my love, here’s to our life together..."></textarea>
         <label for="password">Password (optional)</label>
         <input type="password" id="password" aria-describedby="password-help">
         <small id="password-help">Add a password to keep your letter private.</small>
@@ -30,8 +30,9 @@
       </form>
     </section>
     <section id="countdown-section" style="display: none;">
-      <h2>Time Until Our Letter Opens</h2>
+      <h2>Time Until Myriam’s 80th Birthday</h2>
       <div id="countdown" aria-live="polite"></div>
+      <button id="send-reminder" style="display: none;">Send Reminder Email Now</button>
       <div id="letter-display" style="display: none;">
         <h3>Our Love Letter</h3>
         <p id="letter-text"></p>
@@ -45,7 +46,7 @@
     <div id="motivational-message"></div>
   </main>
   <footer>
-    <p>Made with ❤️ for our forever</p>
+    <p>Made with ❤️ for Myriam, our forever</p>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>

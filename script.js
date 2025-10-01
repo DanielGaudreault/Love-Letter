@@ -1,5 +1,5 @@
 // Initialize EmailJS (replace with your EmailJS user ID after signing up)
-emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your Public Key from EmailJS dashboard
+emailjs.init("myriamc08@hotmail.com"); // Replace with your Public Key from EmailJS dashboard
 
 // Motivational messages
 const messages = [
@@ -113,7 +113,7 @@ document.getElementById("send-reminder").addEventListener("click", function() {
 
   console.log("Sending email with params:", templateParams); // Debug log
 
-  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams) // Replace IDs
+  emailjs.send("myriamc08@hotmail.com", "myriamc08@hotmail.com", templateParams) // Replace IDs
     .then((response) => {
       console.log("Email sent successfully!", response.status, response.text);
       alert("Reminder email sent to myriamc08@hotmail.com! Check her inbox/spam.");

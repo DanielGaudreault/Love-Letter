@@ -3,41 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A love letter for Myriam, sealed until her 80th birthday in 2070.">
+  <meta name="description" content="A magical love letter for Myriam, sealed until her 80th birthday in 2070.">
   <title>Myriam’s Love Capsule</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="hearts-container"></div>
   <header>
     <h1>Myriam’s Love Capsule</h1>
-    <p>A letter sealed with love for Myriam’s 80th birthday in 2070.</p>
+    <p>A letter sealed with love for your 80th birthday in 2070</p>
   </header>
   <main>
     <section id="letter-form">
-      <h2>Write Your Letter to Myriam</h2>
+      <h2>Write Your Heartfelt Letter</h2>
       <form id="capsule-form" aria-label="Time capsule letter form">
-        <label for="unlock-date">Myriam’s 80th Birthday *</label>
+        <label for="unlock-date">Your 80th Birthday *</label>
         <input type="date" id="unlock-date" value="2070-01-01" required aria-required="true">
         <label for="letter-content">Your Letter to Myriam *</label>
         <textarea id="letter-content" rows="6" required aria-required="true">Myriam, my dearest love,
-In 2025, my heart is full of our shared journey—your laughter, our dreams, the way you light up my world. This letter is sealed for your 80th birthday, a moment I hope we’ll share, holding hands, reminiscing about our life together. You are my forever, and I’m grateful every day for you. Here’s to our love, eternal and true.
+In 2025, my heart sings with every memory of you—your radiant smile, our shared dreams, the warmth of your touch. This letter is sealed for your 80th birthday, a day I dream we’ll share, laughing and holding hands as we reflect on our beautiful life. You are my forever, my everything, and I’m endlessly grateful for you. Here’s to our eternal love.
 Yours always,
 Daniel</textarea>
-        <button type="submit">Seal the Letter</button>
+        <button type="submit" class="btn">Seal with Love</button>
       </form>
     </section>
     <section id="countdown-section" style="display: none;">
-      <h2>Time Until Myriam’s 80th Birthday</h2>
+      <h2>Time Until Your 80th Birthday</h2>
       <div id="countdown" aria-live="polite"></div>
-      <button id="send-email">Send Email to Myriam Now</button>
+      <button id="send-email" class="btn">Send Email to Myriam Now</button>
       <div id="letter-display" style="display: none;">
-        <h3>Your Letter to Myriam</h3>
-        <p id="letter-text"></p>
+        <h3>Your Love Letter</h3>
+        <p id="letter-text" class="sparkle"></p>
       </div>
     </section>
   </main>
   <footer>
-    <p>Made with ❤️ for Myriam</p>
+    <p>Made with <span class="heart">❤️</span> for Myriam</p>
   </footer>
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script src="script.js"></script>

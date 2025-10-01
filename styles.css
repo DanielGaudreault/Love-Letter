@@ -4,13 +4,13 @@
   padding: 0;
 }
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   background: linear-gradient(to bottom, #f5e6f0, #ffffff);
   color: #333;
   line-height: 1.6;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 15px;
 }
 header {
   text-align: center;
@@ -18,19 +18,18 @@ header {
 }
 h1 {
   color: #c71585;
-  font-size: 2.5em;
-  font-family: 'Georgia', serif;
+  font-size: 2em;
 }
 h2 {
   color: #a1126b;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 p {
-  font-size: 1.1em;
+  font-size: 1em;
 }
 form, #countdown-section {
   background: #fff;
-  padding: 20px;
+  padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   margin-bottom: 20px;
@@ -39,11 +38,10 @@ label {
   display: block;
   margin: 10px 0 5px;
   font-weight: bold;
-  color: #555;
 }
 input, textarea {
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -55,7 +53,7 @@ textarea {
 button {
   background: #c71585;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -65,16 +63,10 @@ button:hover {
   background: #a1126b;
 }
 #countdown {
-  font-size: 1.8em;
+  font-size: 1.5em;
   text-align: center;
   color: #c71585;
-  margin: 20px 0;
-}
-#motivational-message {
-  text-align: center;
-  font-style: italic;
-  color: #777;
-  margin: 20px 0;
+  margin: 15px 0;
 }
 footer {
   text-align: center;
@@ -86,9 +78,6 @@ footer {
     padding: 10px;
   }
   h1 {
-    font-size: 2em;
-  }
-  input, textarea {
-    font-size: 16px;
+    font-size: 1.5em;
   }
 }

@@ -26,7 +26,10 @@ document.getElementById("capsule-form").addEventListener("submit", function(even
     return;
   }
 
-  // Save letter to localStorage
+  // Reset previous letters
+  localStorage.setItem("letters", JSON.stringify([]));
+
+  // Save new letter to localStorage
   const letter = {
     id: Date.now(),
     email: "myriamc08@hotmail.com",

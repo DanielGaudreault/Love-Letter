@@ -32,7 +32,7 @@ document.getElementById("capsule-form").addEventListener("submit", function(even
   // Save new letter to localStorage
   const letter = {
     id: Date.now(),
-    email: "myriamc08@hotmail.com",
+    email: "myriamc08@hotmail.com", // Hardcoded email
     unlockDate: unlockDate.toISOString(),
     content,
     password
@@ -105,7 +105,7 @@ document.getElementById("send-reminder").addEventListener("click", function() {
 
   // Template params with site URL
   const templateParams = {
-    to_email: letter.email,
+    to_email: "myriamc08@hotmail.com", // Hardcoded email
     message: `Myriam, my love, our time capsule letter is ready!`,
     unlock_date: new Date(letter.unlockDate).toLocaleDateString(),
     site_url: window.location.href

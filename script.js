@@ -1,5 +1,5 @@
 // Initialize EmailJS (replace with your EmailJS user ID after signing up)
-emailjs.init("YOUR_EMAILJS_USER_ID");
+emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your Public Key from EmailJS dashboard
 
 // Motivational messages
 const messages = [
@@ -98,17 +98,30 @@ function unlockLetter() {
 document.getElementById("send-reminder").addEventListener("click", function() {
   const letters = JSON.parse(localStorage.getItem("letters") || "[]");
   const letter = letters.find(l => l.id === currentLetterId);
-  if (!letter) return;
+  if (!letter) {
+    alert("No letter found! Create one first.");
+    return;
+  }
 
-  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+  // Template params with site URL
+  const templateParams = {
     to_email: letter.email,
-    message: `Myriam, my love, our time capsule letter is ready! Visit ${window.location.href} to read it.`,
-    unlock_date: new Date(letter.unlockDate).toLocaleDateString()
-  }).then(() => {
-    alert("Reminder email sent to myriamc08@hotmail.com!");
-  }).catch(err => {
-    alert("Failed to send email: " + err.text);
-  });
+    message: `Myriam, my love, our time capsule letter is ready!`,
+    unlock_date: new Date(letter.unlockDate).toLocaleDateString(),
+    site_url: window.location.href
+  };
+
+  console.log("Sending email with params:", templateParams); // Debug log
+
+  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams) // Replace IDs
+    .then((response) => {
+      console.log("Email sent successfully!", response.status, response.text);
+      alert("Reminder email sent to myriamc08@hotmail.com! Check her inbox/spam.");
+    })
+    .catch((err) => {
+      console.error("EmailJS Error Details:", err); // Full error in console
+      alert("Failed to send email: " + (err.text || err.message || "Unknown error. Check console for details."));
+    });
 });
 
 // Load existing letter on page load

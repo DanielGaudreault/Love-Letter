@@ -4,52 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A love letter for Myriam, to be opened on her 80th birthday in 2070.">
-  <title>Our Forever Love Capsule</title>
+  <title>Our Love Time Capsule</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#f5e6f0">
-  <link rel="icon" href="https://img.icons8.com/color/48/000000/heart.png">
 </head>
 <body>
   <header>
-    <h1>Our Forever Love Capsule</h1>
-    <p>A letter for Myriam, sealed with love until her 80th birthday in 2070.</p>
+    <h1>Our Love Time Capsule</h1>
+    <p>A letter for Myriam, sealed until her 80th birthday in 2070.</p>
   </header>
   <main>
     <section id="letter-form">
-      <h2>Write Your Love Letter to Myriam</h2>
+      <h2>Write Your Letter to Myriam</h2>
       <form id="capsule-form" aria-label="Time capsule letter form">
         <label for="unlock-date">Myriam’s 80th Birthday *</label>
         <input type="date" id="unlock-date" value="2070-01-01" required aria-required="true">
-        <label for="letter-content">Your Heartfelt Letter to Myriam *</label>
+        <label for="letter-content">Your Letter to Myriam *</label>
         <textarea id="letter-content" rows="6" required aria-required="true">Myriam, my dearest love,
-As I write this in 2025, my heart is full knowing we’ve built a life together filled with laughter, dreams, and unbreakable love. You are my everything—my partner, my joy, my home. I’m sealing this letter for your 80th birthday, a moment I dream we’ll share, surrounded by the memories we’ve woven over decades. I see us now, in 2070, your eyes still sparkling, our hands intertwined, reflecting on a lifetime of love. You’ve made every day brighter, and I promise to love you fiercely until the end of time. Here’s to our forever.
-With all my heart,
+In 2025, as I write this, my heart overflows with our shared moments—your smile, our dreams, our unbreakable bond. This letter is for your 80th birthday, a day I imagine us celebrating together, your eyes still sparkling with love. You are my everything, and I’m so grateful for our life together. Here’s to our forever, no matter where time takes us.
+With all my love,
 Daniel</textarea>
-        <label for="password">Password (optional)</label>
-        <input type="password" id="password" aria-describedby="password-help">
-        <small id="password-help">Add a password to keep your letter private.</small>
-        <button type="submit">Seal with Love</button>
+        <button type="submit">Seal the Letter</button>
       </form>
     </section>
     <section id="countdown-section" style="display: none;">
       <h2>Time Until Myriam’s 80th Birthday</h2>
       <div id="countdown" aria-live="polite"></div>
-      <button id="send-reminder" style="display: none;">Send Reminder Email Now</button>
+      <button id="send-email">Send Email to Myriam Now</button>
       <div id="letter-display" style="display: none;">
-        <h3>Our Love Letter</h3>
+        <h3>Your Letter to Myriam</h3>
         <p id="letter-text"></p>
-        <div id="password-section" style="display: none;">
-          <label for="unlock-password">Enter Password:</label>
-          <input type="password" id="unlock-password">
-          <button onclick="unlockLetter()">Open Letter</button>
-        </div>
       </div>
     </section>
-    <div id="motivational-message"></div>
   </main>
   <footer>
-    <p>Made with ❤️ for Myriam, our forever</p>
+    <p>Made with ❤️ for Myriam</p>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>

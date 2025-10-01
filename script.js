@@ -3,11 +3,11 @@ emailjs.init("YOUR_EMAILJS_USER_ID");
 
 // Motivational messages
 const messages = [
-  "Our love grows stronger with every passing day.",
-  "Together, we’ll write a lifetime of memories.",
-  "You are my forever and always.",
-  "Every moment with you is a treasure.",
-  "Here’s to our love, timeless and true."
+  "Myriam, our love is eternal, growing stronger every day.",
+  "Together, we’ll share a lifetime of joy and memories.",
+  "You are my heart, now and forever.",
+  "Every moment with you is a gift I cherish.",
+  "Here’s to our love, shining bright until 2070 and beyond."
 ];
 
 // Display random motivational message
@@ -22,7 +22,7 @@ document.getElementById("capsule-form").addEventListener("submit", function(even
 
   // Validate date
   if (unlockDate <= new Date()) {
-    alert("Please choose a future date!");
+    alert("Please choose a future date (e.g., Myriam’s 80th birthday in 2070)!");
     return;
   }
 
@@ -38,13 +38,11 @@ document.getElementById("capsule-form").addEventListener("submit", function(even
   letters.push(letter);
   localStorage.setItem("letters", JSON.stringify(letters));
 
-  // Show countdown
+  // Show countdown and reminder button
   startCountdown(letter);
   document.getElementById("letter-form").style.display = "none";
   document.getElementById("countdown-section").style.display = "block";
-
-  // Schedule email reminder (simulated)
-  scheduleEmailReminder(letter);
+  document.getElementById("send-reminder").style.display = "block";
 });
 
 // Start countdown
@@ -60,7 +58,7 @@ function startCountdown(letter) {
     const diff = new Date(letter.unlockDate) - now;
     if (diff <= 0) {
       clearInterval(interval);
-      countdownElement.textContent = "Our letter is ready!";
+      countdownElement.textContent = "Myriam’s 80th Birthday! The letter is ready!";
       if (letter.password) {
         passwordSection.style.display = "block";
       } else {
@@ -93,25 +91,22 @@ function unlockLetter() {
   }
 }
 
-// Schedule email reminder using EmailJS
-function scheduleEmailReminder(letter) {
-  const now = new Date();
-  const delay = new Date(letter.unlockDate) - now;
-  if (delay <= 0) return;
+// Manual email reminder
+document.getElementById("send-reminder").addEventListener("click", function() {
+  const letters = JSON.parse(localStorage.getItem("letters") || "[]");
+  const letter = letters.find(l => l.id === currentLetterId);
+  if (!letter) return;
 
-  // Simulate scheduling (requires browser to stay open; see notes)
-  setTimeout(() => {
-    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-      to_email: letter.email,
-      message: `My love, our time capsule letter is ready! Visit ${window.location.href} to read it.`,
-      unlock_date: new Date(letter.unlockDate).toLocaleDateString()
-    }).then(() => {
-      console.log("Email sent!");
-    }).catch(err => {
-      console.error("Email failed:", err);
-    });
-  }, delay);
-}
+  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+    to_email: letter.email,
+    message: `Myriam, my love, our time capsule letter is ready! Visit ${window.location.href} to read it.`,
+    unlock_date: new Date(letter.unlockDate).toLocaleDateString()
+  }).then(() => {
+    alert("Reminder email sent to myriamc08@hotmail.com!");
+  }).catch(err => {
+    alert("Failed to send email: " + err.text);
+  });
+});
 
 // Load existing letter on page load
 window.onload = () => {
@@ -121,6 +116,7 @@ window.onload = () => {
     startCountdown(letters[letters.length - 1]);
     document.getElementById("letter-form").style.display = "none";
     document.getElementById("countdown-section").style.display = "block";
+    document.getElementById("send-reminder").style.display = "block";
   }
 };
 

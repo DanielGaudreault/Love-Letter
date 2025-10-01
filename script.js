@@ -4,17 +4,25 @@ emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your Public Key from Email
 // Form submission
 document.getElementById("capsule-form").addEventListener("submit", function(event) {
   event.preventDefault();
+  console.log("Form submitted"); // Debug log
   const unlockDate = new Date(document.getElementById("unlock-date").value);
   const content = document.getElementById("letter-content").value;
 
-  // Validate date
+  // Validate inputs
+  if (!content) {
+    alert("Please enter a letter!");
+    console.error("Validation failed: Empty letter content");
+    return;
+  }
   if (unlockDate <= new Date()) {
     alert("Please choose a future date (e.g., Myriam’s 80th birthday in 2070)!");
+    console.error("Validation failed: Invalid date", unlockDate);
     return;
   }
 
   // Reset previous letters
   localStorage.setItem("letters", JSON.stringify([]));
+  console.log("Previous letters cleared");
 
   // Save new letter to localStorage
   const letter = {
@@ -24,6 +32,7 @@ document.getElementById("capsule-form").addEventListener("submit", function(even
     content
   };
   localStorage.setItem("letters", JSON.stringify([letter]));
+  console.log("Letter saved:", letter);
 
   // Show countdown and email button
   startCountdown(letter);
@@ -39,6 +48,7 @@ function startCountdown(letter) {
   const countdownElement = document.getElementById("countdown");
   const letterText = document.getElementById("letter-text");
   const letterDisplay = document.getElementById("letter-display");
+  console.log("Starting countdown for letter:", letter.id); // Debug log
   const interval = setInterval(() => {
     const now = new Date();
     const diff = new Date(letter.unlockDate) - now;
@@ -47,7 +57,7 @@ function startCountdown(letter) {
       countdownElement.textContent = "Myriam’s 80th Birthday! The letter is ready!";
       letterText.textContent = letter.content;
       letterDisplay.style.display = "block";
-      confetti({ particleCount: 100, spread: 70, colors: ["#ff69b4", "#ffffff"] });
+      console.log("Letter revealed");
       return;
     }
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -64,6 +74,7 @@ document.getElementById("send-email").addEventListener("click", function() {
   const letter = letters.find(l => l.id === currentLetterId);
   if (!letter) {
     alert("No letter found! Create one first.");
+    console.error("No letter found for email");
     return;
   }
 
@@ -74,7 +85,7 @@ document.getElementById("send-email").addEventListener("click", function() {
     site_url: window.location.href
   };
 
-  console.log("Sending email to myriamc08@hotmail.com with params:", templateParams); // Debug log
+  console.log("Attempting to send email to myriamc08@hotmail.com with params:", templateParams); // Debug log
 
   emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams) // Replace IDs
     .then((response) => {
@@ -82,13 +93,14 @@ document.getElementById("send-email").addEventListener("click", function() {
       alert("Email sent to myriamc08@hotmail.com! Check her inbox/spam.");
     })
     .catch((err) => {
-      console.error("EmailJS Error:", err); // Detailed error in console
+      console.error("EmailJS Error:", err); // Detailed error
       alert("Failed to send email: " + (err.text || err.message || "Check console for details."));
     });
 });
 
 // Load existing letter on page load
 window.onload = () => {
+  console.log("Page loaded, checking for existing letter"); // Debug log
   const letters = JSON.parse(localStorage.getItem("letters") || "[]");
   if (letters.length > 0) {
     currentLetterId = letters[0].id;
@@ -96,5 +108,6 @@ window.onload = () => {
     document.getElementById("letter-form").style.display = "none";
     document.getElementById("countdown-section").style.display = "block";
     document.getElementById("send-email").style.display = "block";
+    console.log("Loaded existing letter:", letters[0]);
   }
 };

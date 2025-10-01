@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A time capsule letter for our love, to be opened together in the future.">
+  <title>Our Love Time Capsule</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#f5e6f0">
+  <link rel="icon" href="https://img.icons8.com/color/48/000000/heart.png">
+</head>
+<body>
+  <header>
+    <h1>Our Love Time Capsule</h1>
+    <p>A letter to celebrate our life together, sealed with love until the perfect moment.</p>
+  </header>
+  <main>
+    <section id="letter-form">
+      <h2>Write Your Love Letter</h2>
+      <form id="capsule-form" aria-label="Time capsule letter form">
+        <label for="unlock-date">When should we open this? *</label>
+        <input type="date" id="unlock-date" required aria-required="true">
+        <label for="letter-content">Your Heartfelt Letter *</label>
+        <textarea id="letter-content" rows="6" required aria-required="true" placeholder="My love, here’s to our forever..."></textarea>
+        <label for="password">Password (optional)</label>
+        <input type="password" id="password" aria-describedby="password-help">
+        <small id="password-help">Add a password to keep your letter private.</small>
+        <button type="submit">Seal with Love</button>
+      </form>
+    </section>
+    <section id="countdown-section" style="display: none;">
+      <h2>Time Until Our Letter Opens</h2>
+      <div id="countdown" aria-live="polite"></div>
+      <div id="letter-display" style="display: none;">
+        <h3>Our Love Letter</h3>
+        <p id="letter-text"></p>
+        <div id="password-section" style="display: none;">
+          <label for="unlock-password">Enter Password:</label>
+          <input type="password" id="unlock-password">
+          <button onclick="unlockLetter()">Open Letter</button>
+        </div>
+      </div>
+    </section>
+    <div id="motivational-message"></div>
+  </main>
+  <footer>
+    <p>Made with ❤️ for our forever</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
